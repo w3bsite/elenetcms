@@ -32,28 +32,28 @@ layout: blog
     </article>
     {% endfor %}
 </section> -->
-<section class="grid grid-cols-3 gap-4">
+<section class="grid grid-cols-4 gap-4 ">
     {% set postslist = collections.post %} {% for post in postslist | reverse %}
     <div class="border border-dark-600 rounded-md">
-        <div class="bg-white rounded" style="min-height: 300px !important">
+        <div class="bg-white rounded">
+            <!-- Temp Image Thumbnail -->
             <img
-                class="max-w-[calc(100%)]"
-                src="https://source.unsplash.com/random/400x300/"
+                src="https://source.unsplash.com/random/400x400/"
                 alt="Card image cap"
             />
             <div class="content p-6">
-                <div class="title">
-                    <h5 class="font-bold text-3xl text-gray-900 mb-2">
-                        <a href="{{ post.url | url }}">
-                            {% if post.data.title %} {{ post.data.title }} {%
-                            else %} Untitled {% endif %}
-                        </a>
-                    </h5>
+                <!-- Title -->
+                <div class="mb-6">
+                    <a href="{{ post.url | url }}" class="text-xl text-red-600">
+                        {% if post.data.title %} {{ post.data.title }} {% else
+                        %} Untitled {% endif %}
+                    </a>
                 </div>
 
                 {% if post.data.description %}
-                <p class="text-lg text-gray-500 mb-3">
-                    {{ post.data.description }}
+                <!-- Content Shortened -->
+                <p class="text-gray-500 mb-3">
+                    {{ post.data.description.substring(0,140) }}
                 </p>
                 {% endif %}
 
